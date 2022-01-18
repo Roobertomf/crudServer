@@ -5,7 +5,7 @@ const rolValidator = async (rol = "") => {
   const existeRol = await Role.findOne({ rol });
   if (!existeRol) {
     throw new Error(
-      `El rol ${rol} no es valido debe ser Admin_Role o User_Role`
+      `El rol ${rol} no es valido debe ser ADMIN_ROLE o USER_ROLE`
     );
   }
 };

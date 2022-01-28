@@ -7,11 +7,11 @@ const Usuario = require("../models/usuario");
 
 const login = async (req, res) => {
   const { correo, password } = req.body;
-  console.log(correo);
+
   try {
     //Verificar si el email exite
     const usuario = await Usuario.findOne({ email: correo });
-    console.log(usuario);
+
     if (!usuario) {
       return res.status(400).json({
         msg: "Usuario o contraseña no son correctos - correo",

@@ -29,12 +29,22 @@ const categoriaExiste = async (id) => {
   }
 };
 const productoExiste = async (id) => {
-  console.log("Dentro", id);
   const existeProducto = await Producto.findById(id);
 
   if (!existeProducto) {
     throw new Error(`El id ${id} no existe`);
   }
+};
+
+//validar colecciones permitidas
+const coleccionesPermitidas = (coleccion = "", colecciones = []) => {
+  const incluida = colecciones.includes(coleccion);
+  if (!incluida) {
+    throw new Error(
+      `la coleccion ${coleccion} no es permitida-- ${colecciones}`
+    );
+  }
+  return true;
 };
 module.exports = {
   rolValidator,
@@ -42,4 +52,5 @@ module.exports = {
   usuarioIdExiste,
   categoriaExiste,
   productoExiste,
+  coleccionesPermitidas,
 };
